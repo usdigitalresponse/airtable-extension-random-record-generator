@@ -1,43 +1,24 @@
-import { Box, Heading, Text, ProgressBar } from '@airtable/blocks/ui'
-import React, { useEffect, useState } from 'react'
-import generateContent from './generators'
+import { Box, Heading, Text, ProgressBar, Button } from '@airtable/blocks/ui'
+import React from 'react'
 
-const GenerateRecords = ({ table, fieldSettings, numberOfRecords }) => {
-  const [generated, setGenerated] = useState(0)
-  useEffect(() => {
-    const generateRecords = async () => {
-      for (let i = 0; i < numberOfRecords; i++) {
-        const { generate } = generateContent()
-        const record = {}
-        for (const [fieldId, generatorId] of Object.entries(fieldSettings)) {
-          if (generatorId) {
-            record[fieldId] = generate({
-              generatorId,
-              field: table.getFieldById(fieldId),
-            })
-          }
-        }
-        await table.createRecordAsync(record)
-        setGenerated(generated + 1)
-      }
-    }
-    generateRecords()
-  }, [fieldSettings, generated, numberOfRecords, table])
-
-  return (
-    <Box marginTop="1rem">
-      <Heading>Generating records</Heading>
-      <Text>
-        Generated <strong>{generated}</strong> of{' '}
-        <strong>{numberOfRecords}</strong> records.
-      </Text>
-      {generated === numberOfRecords ? (
-        <Text>Done!</Text>
-      ) : (
-        <ProgressBar progress={generated / numberOfRecords} />
-      )}
-    </Box>
-  )
-}
+const GenerateRecords = ({ generated, numberOfRecords, onDone }) => (
+  <Box marginTop="1rem">
+    <Heading>Generating records</Heading>
+    <Text>
+      Generated <strong>{generated}</strong> of{' '}
+      <strong>{numberOfRecords}</strong> records.
+    </Text>
+    {generated === numberOfRecords ? (
+      <Box margin="1rem 0">
+        <Text>Done generating records.</Text>
+        <Button variant="primary" onClick={onDone}>
+          Start over
+        </Button>
+      </Box>
+    ) : (
+      <ProgressBar progress={generated / numberOfRecords} />
+    )}
+  </Box>
+)
 
 export default GenerateRecords

@@ -20,15 +20,36 @@ const GenerateRecordForm = ({ table }) => {
   const [numberOfRecords, setNumberOfRecords] = useState(100)
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [isGenerating, setIsGenerating] = useState(false)
+  const [generated, setGenerated] = useState(0)
 
   const { generators, generate } = generateContent()
+
+  const generateRecords = async () => {
+    for (let i = 0; i < numberOfRecords; i++) {
+      const { generate } = generateContent()
+      const record = {}
+      for (const [fieldId, generatorId] of Object.entries(fieldSettings)) {
+        if (generatorId) {
+          record[fieldId] = generate({
+            generatorId,
+            field: table.getFieldById(fieldId),
+          })
+        }
+      }
+      await table.createRecordAsync(record)
+      setGenerated(i + 1)
+    }
+  }
 
   if (isGenerating) {
     return (
       <GenerateRecords
-        table={table}
-        fieldSettings={fieldSettings}
+        generated={generated}
         numberOfRecords={numberOfRecords}
+        onDone={() => {
+          setIsGenerating(false)
+          setGenerated(0)
+        }}
       />
     )
   }
@@ -47,6 +68,7 @@ const GenerateRecordForm = ({ table }) => {
           onConfirm={() => {
             setIsDialogOpen(false)
             setIsGenerating(true)
+            generateRecords()
           }}
           onCancel={() => setIsDialogOpen(false)}
         />

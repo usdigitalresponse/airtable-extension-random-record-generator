@@ -244,7 +244,7 @@ const generateContent = (): { generators: Generators; generate: Function } => {
     {
       id: 'selectSingle',
       name: 'Single value',
-      types: [FieldType.SINGLE_SELECT, FieldType.MULTIPLE_SELECTS],
+      types: [FieldType.SINGLE_SELECT],
       generate: (preview, field) => {
         const choice =
           field.options.choices[
