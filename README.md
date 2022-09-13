@@ -2,6 +2,8 @@
 
 An Airtable extension that makes generating fake records for the purpose of demonstrating bases.
 
+![image](https://user-images.githubusercontent.com/270536/190019329-b7c008df-ca32-4f25-85e8-1153966e8a26.png)
+
 Supports the following field types and random generators. Examples included:
 
 - **Single line text**
