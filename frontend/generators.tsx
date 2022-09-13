@@ -5,12 +5,11 @@ import { FieldType } from '@airtable/blocks/models'
 import randomMobile from 'random-mobile'
 import states from 'states-us'
 import React from 'react'
-import cities from './cities'
+import cities from './data/cities'
 
 /**
  *
  * TODO
- * - Phone number
  * - Lat
  * - Long
  * - Reference to other table
