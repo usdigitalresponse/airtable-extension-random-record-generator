@@ -1,0 +1,616 @@
+import { FieldType, ViewType } from '@airtable/blocks/models'
+import { mockSdkWithFixtureData } from '@airtable/blocks/testing'
+export default mockSdkWithFixtureData({
+  base: {
+    id: 'appKevindevRandom',
+    name: '\uD83D\uDE36\u200D\uD83C\uDF2B\uFE0F Kevin: [dev] Random Generator',
+    color: 'gray',
+    tables: [
+      {
+        id: 'tblTable1',
+        name: 'Table 1',
+        description: '',
+        fields: [
+          {
+            id: 'fldName',
+            name: 'Name',
+            description: '',
+            type: FieldType.SINGLE_LINE_TEXT,
+            options: null,
+          },
+          {
+            id: 'fldNotes',
+            name: 'Notes',
+            description: '',
+            type: FieldType.MULTILINE_TEXT,
+            options: null,
+          },
+          {
+            id: 'fldStatus',
+            name: 'Status',
+            description: '',
+            type: FieldType.SINGLE_SELECT,
+            options: {
+              choices: [
+                {
+                  id: 'selTodo',
+                  name: 'Todo',
+                  color: 'redLight2',
+                },
+                {
+                  id: 'selInProgress',
+                  name: 'In progress',
+                  color: 'yellowLight2',
+                },
+                {
+                  id: 'selDone',
+                  name: 'Done',
+                  color: 'greenLight2',
+                },
+              ],
+            },
+          },
+          {
+            id: 'fldTable2',
+            name: 'Table 2',
+            description: '',
+            type: FieldType.MULTIPLE_RECORD_LINKS,
+            options: {
+              linkedTableId: 'tblTable2',
+              isReversed: false,
+              prefersSingleRecordLink: false,
+              inverseLinkFieldId: 'fldReference',
+              viewIdForRecordSelection: undefined,
+            },
+          },
+        ],
+        views: [
+          {
+            id: 'viwGridView',
+            name: 'Grid view',
+            type: ViewType.GRID,
+            fieldOrder: {
+              fieldIds: ['fldName', 'fldNotes', 'fldStatus', 'fldTable2'],
+              visibleFieldCount: 4,
+            },
+            records: [
+              {
+                id: 'reca',
+                color: null,
+              },
+              {
+                id: 'recb',
+                color: null,
+              },
+              {
+                id: 'recc',
+                color: null,
+              },
+            ],
+          },
+        ],
+        records: [
+          {
+            id: 'reca',
+            commentCount: 0,
+            createdTime: '2022-09-12T22:00:51.000Z',
+            cellValuesByFieldId: {
+              fldName: 'a',
+              fldNotes: null,
+              fldStatus: null,
+              fldTable2: [
+                {
+                  id: 'recUnnamed',
+                  name: '',
+                },
+                {
+                  id: 'recCissy',
+                  name: 'Cissy',
+                },
+                {
+                  id: 'recChristiane',
+                  name: 'Christiane',
+                },
+              ],
+            },
+          },
+          {
+            id: 'recb',
+            commentCount: 0,
+            createdTime: '2022-09-12T22:00:51.000Z',
+            cellValuesByFieldId: {
+              fldName: 'b',
+              fldNotes: null,
+              fldStatus: null,
+              fldTable2: [
+                {
+                  id: 'recUnnamed2',
+                  name: '',
+                },
+                {
+                  id: 'recKyla',
+                  name: 'Kyla',
+                },
+              ],
+            },
+          },
+          {
+            id: 'recc',
+            commentCount: 0,
+            createdTime: '2022-09-12T22:00:51.000Z',
+            cellValuesByFieldId: {
+              fldName: 'c',
+              fldNotes: null,
+              fldStatus: null,
+              fldTable2: [
+                {
+                  id: 'recCissy',
+                  name: 'Cissy',
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        id: 'tblTable2',
+        name: 'Table 2',
+        description: '',
+        fields: [
+          {
+            id: 'fldName2',
+            name: 'Name',
+            description: '',
+            type: FieldType.SINGLE_LINE_TEXT,
+            options: null,
+          },
+          {
+            id: 'fldNotes2',
+            name: 'Notes',
+            description: '',
+            type: FieldType.MULTILINE_TEXT,
+            options: null,
+          },
+          {
+            id: 'fldStatus2',
+            name: 'Status',
+            description: '',
+            type: FieldType.SINGLE_SELECT,
+            options: {
+              choices: [
+                {
+                  id: 'selTodo2',
+                  name: 'Todo',
+                  color: 'redLight2',
+                },
+                {
+                  id: 'selInProgress2',
+                  name: 'In progress',
+                  color: 'yellowLight2',
+                },
+                {
+                  id: 'selDone2',
+                  name: 'Done',
+                  color: 'greenLight2',
+                },
+              ],
+            },
+          },
+          {
+            id: 'fldEmail',
+            name: 'Email',
+            description: '',
+            type: FieldType.EMAIL,
+            options: null,
+          },
+          {
+            id: 'fldPhoto',
+            name: 'Photo',
+            description: '',
+            type: FieldType.MULTIPLE_ATTACHMENTS,
+            options: {
+              isReversed: false,
+            },
+          },
+          {
+            id: 'fldmultiselect',
+            name: 'multi-select',
+            description: '',
+            type: FieldType.MULTIPLE_SELECTS,
+            options: {
+              choices: [
+                {
+                  id: 'selA',
+                  name: 'A',
+                  color: 'blueLight2',
+                },
+                {
+                  id: 'selB',
+                  name: 'B',
+                  color: 'cyanLight2',
+                },
+                {
+                  id: 'selC',
+                  name: 'C',
+                  color: 'tealLight2',
+                },
+                {
+                  id: 'selD',
+                  name: 'D',
+                  color: 'greenLight2',
+                },
+              ],
+            },
+          },
+          {
+            id: 'fldAddress1',
+            name: 'Address 1',
+            description: '',
+            type: FieldType.SINGLE_LINE_TEXT,
+            options: null,
+          },
+          {
+            id: 'fldCity',
+            name: 'City',
+            description: '',
+            type: FieldType.SINGLE_LINE_TEXT,
+            options: null,
+          },
+          {
+            id: 'fldZipCode',
+            name: 'Zip code',
+            description: '',
+            type: FieldType.NUMBER,
+            options: {
+              precision: 0,
+            },
+          },
+          {
+            id: 'fldphone',
+            name: 'phone',
+            description: '',
+            type: FieldType.PHONE_NUMBER,
+            options: null,
+          },
+          {
+            id: 'fldFirstName',
+            name: 'First name',
+            description: '',
+            type: FieldType.SINGLE_LINE_TEXT,
+            options: null,
+          },
+          {
+            id: 'fldLastName',
+            name: 'Last name',
+            description: '',
+            type: FieldType.SINGLE_LINE_TEXT,
+            options: null,
+          },
+          {
+            id: 'fldReference',
+            name: 'Reference',
+            description: '',
+            type: FieldType.MULTIPLE_RECORD_LINKS,
+            options: {
+              linkedTableId: 'tblTable1',
+              isReversed: false,
+              prefersSingleRecordLink: false,
+              inverseLinkFieldId: 'fldTable2',
+              viewIdForRecordSelection: undefined,
+            },
+          },
+        ],
+        views: [
+          {
+            id: 'viwGridView2',
+            name: 'Grid view',
+            type: ViewType.GRID,
+            fieldOrder: {
+              fieldIds: [
+                'fldName2',
+                'fldReference',
+                'fldFirstName',
+                'fldLastName',
+                'fldNotes2',
+                'fldPhoto',
+                'fldStatus2',
+                'fldEmail',
+                'fldmultiselect',
+                'fldAddress1',
+                'fldCity',
+                'fldZipCode',
+                'fldphone',
+              ],
+              visibleFieldCount: 13,
+            },
+            records: [
+              {
+                id: 'recUnnamed3',
+                color: null,
+              },
+              {
+                id: 'recUnnamed2',
+                color: null,
+              },
+              {
+                id: 'recUnnamed',
+                color: null,
+              },
+              {
+                id: 'recCissy',
+                color: null,
+              },
+              {
+                id: 'recChristiane',
+                color: null,
+              },
+              {
+                id: 'recKyla',
+                color: null,
+              },
+            ],
+          },
+        ],
+        records: [
+          {
+            id: 'recUnnamed3',
+            commentCount: 0,
+            createdTime: '2022-09-14T15:08:22.000Z',
+            cellValuesByFieldId: {
+              fldName2: null,
+              fldNotes2: null,
+              fldStatus2: null,
+              fldEmail: null,
+              fldPhoto: null,
+              fldmultiselect: null,
+              fldAddress1: null,
+              fldCity: null,
+              fldZipCode: null,
+              fldphone: null,
+              fldFirstName: null,
+              fldLastName: null,
+              fldReference: null,
+            },
+          },
+          {
+            id: 'recUnnamed2',
+            commentCount: 0,
+            createdTime: '2022-09-14T15:22:02.261Z',
+            cellValuesByFieldId: {
+              fldName2: null,
+              fldNotes2: null,
+              fldStatus2: null,
+              fldEmail: null,
+              fldPhoto: null,
+              fldmultiselect: null,
+              fldAddress1: null,
+              fldCity: null,
+              fldZipCode: null,
+              fldphone: null,
+              fldFirstName: null,
+              fldLastName: 'Morganne',
+              fldReference: [
+                {
+                  id: 'recb',
+                  name: 'b',
+                },
+              ],
+            },
+          },
+          {
+            id: 'recUnnamed',
+            commentCount: 0,
+            createdTime: '2022-09-14T15:22:03.019Z',
+            cellValuesByFieldId: {
+              fldName2: null,
+              fldNotes2: null,
+              fldStatus2: null,
+              fldEmail: null,
+              fldPhoto: null,
+              fldmultiselect: null,
+              fldAddress1: null,
+              fldCity: null,
+              fldZipCode: null,
+              fldphone: null,
+              fldFirstName: null,
+              fldLastName: 'Margeaux',
+              fldReference: [
+                {
+                  id: 'reca',
+                  name: 'a',
+                },
+              ],
+            },
+          },
+          {
+            id: 'recCissy',
+            commentCount: 0,
+            createdTime: '2022-09-14T15:27:31.525Z',
+            cellValuesByFieldId: {
+              fldName2: 'Cissy',
+              fldNotes2: null,
+              fldStatus2: null,
+              fldEmail: null,
+              fldPhoto: null,
+              fldmultiselect: null,
+              fldAddress1: null,
+              fldCity: null,
+              fldZipCode: null,
+              fldphone: null,
+              fldFirstName: null,
+              fldLastName: null,
+              fldReference: [
+                {
+                  id: 'reca',
+                  name: 'a',
+                },
+                {
+                  id: 'recc',
+                  name: 'c',
+                },
+              ],
+            },
+          },
+          {
+            id: 'recChristiane',
+            commentCount: 0,
+            createdTime: '2022-09-14T15:27:32.181Z',
+            cellValuesByFieldId: {
+              fldName2: 'Christiane',
+              fldNotes2: null,
+              fldStatus2: null,
+              fldEmail: null,
+              fldPhoto: null,
+              fldmultiselect: null,
+              fldAddress1: null,
+              fldCity: null,
+              fldZipCode: null,
+              fldphone: null,
+              fldFirstName: null,
+              fldLastName: null,
+              fldReference: [
+                {
+                  id: 'reca',
+                  name: 'a',
+                },
+              ],
+            },
+          },
+          {
+            id: 'recKyla',
+            commentCount: 0,
+            createdTime: '2022-09-14T15:27:32.588Z',
+            cellValuesByFieldId: {
+              fldName2: 'Kyla',
+              fldNotes2: null,
+              fldStatus2: null,
+              fldEmail: null,
+              fldPhoto: null,
+              fldmultiselect: null,
+              fldAddress1: null,
+              fldCity: null,
+              fldZipCode: null,
+              fldphone: null,
+              fldFirstName: null,
+              fldLastName: null,
+              fldReference: [
+                {
+                  id: 'recb',
+                  name: 'b',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+    collaborators: [
+      {
+        id: 'usrGeraldineOsins',
+        name: 'Geraldine Osinski',
+        email: 'geraldine.osinski@airtable.test',
+        profilePicUrl:
+          'https://dl.airtable.test/.profilePics/usrGeraldineOsins',
+        isActive: true,
+      },
+      {
+        id: 'usrLyndaPurdy',
+        name: 'Lynda Purdy',
+        email: 'lynda.purdy@airtable.test',
+        profilePicUrl: 'https://dl.airtable.test/.profilePics/usrLyndaPurdy',
+        isActive: true,
+      },
+      {
+        id: 'usrJeanneTillman',
+        name: 'Jeanne Tillman',
+        email: 'jeanne.tillman@airtable.test',
+        profilePicUrl: 'https://dl.airtable.test/.profilePics/usrJeanneTillman',
+        isActive: true,
+      },
+      {
+        id: 'usrMikeMiller',
+        name: 'Mike Miller',
+        email: 'mike.miller@airtable.test',
+        profilePicUrl: 'https://dl.airtable.test/.profilePics/usrMikeMiller',
+        isActive: true,
+      },
+      {
+        id: 'usrHermanTrantow',
+        name: 'Herman Trantow',
+        email: 'herman.trantow@airtable.test',
+        profilePicUrl: 'https://dl.airtable.test/.profilePics/usrHermanTrantow',
+        isActive: true,
+      },
+      {
+        id: 'usrJesusHackett',
+        name: 'Jesus Hackett',
+        email: 'jesus.hackett@airtable.test',
+        profilePicUrl: 'https://dl.airtable.test/.profilePics/usrJesusHackett',
+        isActive: true,
+      },
+      {
+        id: 'usrAliciaWalsh',
+        name: 'Alicia Walsh',
+        email: 'alicia.walsh@airtable.test',
+        profilePicUrl: 'https://dl.airtable.test/.profilePics/usrAliciaWalsh',
+        isActive: true,
+      },
+      {
+        id: 'usrJoyHilpert',
+        name: 'Joy Hilpert',
+        email: 'joy.hilpert@airtable.test',
+        profilePicUrl: 'https://dl.airtable.test/.profilePics/usrJoyHilpert',
+        isActive: true,
+      },
+      {
+        id: 'usrNancyGlover',
+        name: 'Nancy Glover',
+        email: 'nancy.glover@airtable.test',
+        profilePicUrl: 'https://dl.airtable.test/.profilePics/usrNancyGlover',
+        isActive: true,
+      },
+      {
+        id: 'usrJavierKulas',
+        name: 'Javier Kulas',
+        email: 'javier.kulas@airtable.test',
+        profilePicUrl: 'https://dl.airtable.test/.profilePics/usrJavierKulas',
+        isActive: true,
+      },
+      {
+        id: 'usrTonyaMante',
+        name: 'Tonya Mante',
+        email: 'tonya.mante@airtable.test',
+        profilePicUrl: 'https://dl.airtable.test/.profilePics/usrTonyaMante',
+        isActive: true,
+      },
+      {
+        id: 'usrPatCrooks',
+        name: 'Pat Crooks',
+        email: 'pat.crooks@airtable.test',
+        profilePicUrl: 'https://dl.airtable.test/.profilePics/usrPatCrooks',
+        isActive: true,
+      },
+      {
+        id: 'usrAmyProhaska',
+        name: 'Amy Prohaska',
+        email: 'amy.prohaska@airtable.test',
+        profilePicUrl: 'https://dl.airtable.test/.profilePics/usrAmyProhaska',
+        isActive: true,
+      },
+      {
+        id: 'usrJackKozey',
+        name: 'Jack Kozey',
+        email: 'jack.kozey@airtable.test',
+        profilePicUrl: 'https://dl.airtable.test/.profilePics/usrJackKozey',
+        isActive: true,
+      },
+      {
+        id: 'usrOrlandoFeil',
+        name: 'Orlando Feil',
+        email: 'orlando.feil@airtable.test',
+        profilePicUrl: 'https://dl.airtable.test/.profilePics/usrOrlandoFeil',
+        isActive: true,
+      },
+    ],
+  },
+})

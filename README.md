@@ -37,3 +37,6 @@ Supports the following field types and random generators. Examples included:
   - Random selection from the select options
 - **Phone number**
   - Random phone number
+- **Linked record**
+  - Random single linked record
+  - Random multiple linked records

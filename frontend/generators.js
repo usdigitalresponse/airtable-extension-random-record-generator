@@ -7,52 +7,33 @@ import states from 'states-us'
 import React from 'react'
 import cities from './data/cities'
 
-/**
- *
- * TODO
- * - Lat
- * - Long
- * - Reference to other table
- */
+const generateContent = (base) => {
+  const float = Math.random() * 100
+  const integerNumber = Math.floor(float)
+  const boolean = Math.random() > 0.5
 
-interface GeneratorItem {
-  id: string
-  name: string
-  types: Array<FieldType>
-  generate: Function
-}
-
-interface Generators extends Array<GeneratorItem> {}
-
-const generateContent = (
-  base: any
-): { generators: Generators; generate: Function } => {
-  const float: number = Math.random() * 100
-  const integerNumber: number = Math.floor(float)
-  const boolean: boolean = Math.random() > 0.5
-
-  const firstName: string = uniqueNamesGenerator({
+  const firstName = uniqueNamesGenerator({
     style: 'capital',
     dictionaries: [names],
   })
 
-  const startLetter: string = firstName.charAt(0).toLowerCase()
+  const startLetter = firstName.charAt(0).toLowerCase()
 
-  const lastName: string = uniqueNamesGenerator({
+  const lastName = uniqueNamesGenerator({
     style: 'capital',
     dictionaries: [
       names.filter((name) => name.charAt(0).toLowerCase() === startLetter),
     ],
   })
 
-  const animal: string = uniqueNamesGenerator({
+  const animal = uniqueNamesGenerator({
     style: 'capital',
     dictionaries: [
       animals.filter((name) => name.charAt(0).toLowerCase() === startLetter),
     ],
   })
 
-  const lorem: LoremIpsum = new LoremIpsum({
+  const lorem = new LoremIpsum({
     sentencesPerParagraph: {
       max: 8,
       min: 4,
@@ -63,7 +44,7 @@ const generateContent = (
     },
   })
 
-  const generators: Generators = [
+  const generators = [
     {
       id: 'animalNameFirst',
       name: 'Animal name - first',
@@ -336,18 +317,14 @@ const generateContent = (
     },
   ]
 
-  const generate = async ({
-    generatorId,
-    preview = false,
-    field,
-  }): string | null => {
+  const generate = async ({ generatorId, preview = false, field }) => {
     const generator = generators.find(
       (generator) => generator.id === generatorId
     )
     if (generator && generator.generate) {
       return await generator.generate(preview, field)
     }
-    return null
+    return Promise.resolve(null)
   }
 
   return {
