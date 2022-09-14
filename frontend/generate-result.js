@@ -1,7 +1,7 @@
 import { Box, Heading, Text, ProgressBar, Button } from '@airtable/blocks/ui'
 import React from 'react'
 
-const GenerateRecords = ({ generated, numberOfRecords, onDone }) => (
+const GenerateResult = ({ generated, numberOfRecords, onDone }) => (
   <Box marginTop="1rem">
     <Heading>Generating records</Heading>
     <Text>
@@ -21,4 +21,4 @@ const GenerateRecords = ({ generated, numberOfRecords, onDone }) => (
   </Box>
 )
 
-export default GenerateRecords
+export default GenerateResult

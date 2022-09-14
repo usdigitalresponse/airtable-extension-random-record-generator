@@ -3,7 +3,7 @@
   "description": "Randomly generates Airtable records",
   "license": "Apache-2.0",
   "scripts": {
-    "lint": "eslint ./frontend/**/*.js"
+    "lint": "eslint frontend test"
   },
   "dependencies": {
     "@airtable/blocks": "1.8.0",

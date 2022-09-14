@@ -12,7 +12,7 @@ import {
   useBase,
 } from '@airtable/blocks/ui'
 import generateContent from './generators'
-import GenerateRecords from './generate'
+import GenerateResult from './generate-result'
 import React, { useEffect, useState } from 'react'
 
 const GenerateRecordForm = ({ table }) => {
@@ -29,13 +29,15 @@ const GenerateRecordForm = ({ table }) => {
 
   const GenerateSample = ({ generatorId, field }) => {
     const [value, setValue] = useState(false)
+
     useEffect(() => {
       generate({
         generatorId,
         preview: true,
         field,
       }).then((result) => setValue(result))
-    }, [])
+    }, [generatorId, field])
+
     return (
       <>
         <Text
@@ -78,7 +80,7 @@ const GenerateRecordForm = ({ table }) => {
 
   if (isGenerating) {
     return (
-      <GenerateRecords
+      <GenerateResult
         generated={generated}
         numberOfRecords={numberOfRecords}
         onDone={() => {
