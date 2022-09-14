@@ -5,15 +5,18 @@ import {
   Input,
   Select,
   Text,
+  Loader,
   colors,
   colorUtils,
   ConfirmationDialog,
+  useBase,
 } from '@airtable/blocks/ui'
 import generateContent from './generators'
 import GenerateRecords from './generate'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const GenerateRecordForm = ({ table }) => {
+  const base = useBase()
   const [fieldSettings, setFieldSettings] = useState(
     Object.fromEntries(table.fields.map((field) => [field.id, false]))
   )
@@ -22,15 +25,47 @@ const GenerateRecordForm = ({ table }) => {
   const [isGenerating, setIsGenerating] = useState(false)
   const [generated, setGenerated] = useState(0)
 
-  const { generators, generate } = generateContent()
+  const { generators, generate } = generateContent(base)
+
+  const GenerateSample = ({ generatorId, field }) => {
+    const [value, setValue] = useState(false)
+    useEffect(() => {
+      generate({
+        generatorId,
+        preview: true,
+        field,
+      }).then((result) => setValue(result))
+    }, [])
+    return (
+      <>
+        <Text
+          textColor={colorUtils.getHexForColor(colors.GRAY_BRIGHT)}
+          marginTop="0"
+          fontWeight={700}
+        >
+          Sample
+        </Text>
+        {value ? (
+          <Text
+            textColor={colorUtils.getHexForColor(colors.GRAY_BRIGHT)}
+            margin="0.5rem 0"
+          >
+            {value}
+          </Text>
+        ) : (
+          <Loader scale={0.3} />
+        )}
+      </>
+    )
+  }
 
   const generateRecords = async () => {
     for (let i = 0; i < numberOfRecords; i++) {
-      const { generate } = generateContent()
+      const { generate } = generateContent(base)
       const record = {}
       for (const [fieldId, generatorId] of Object.entries(fieldSettings)) {
         if (generatorId) {
-          record[fieldId] = generate({
+          record[fieldId] = await generate({
             generatorId,
             field: table.getFieldById(fieldId),
           })
@@ -129,23 +164,10 @@ const GenerateRecordForm = ({ table }) => {
               <Box width="50%">
                 {fieldSettings[field.id] && (
                   <Box marginLeft="1rem">
-                    <Text
-                      textColor={colorUtils.getHexForColor(colors.GRAY_BRIGHT)}
-                      marginTop="0"
-                      fontWeight={700}
-                    >
-                      Sample
-                    </Text>
-                    <Text
-                      textColor={colorUtils.getHexForColor(colors.GRAY_BRIGHT)}
-                      margin="0.5rem 0"
-                    >
-                      {generate({
-                        generatorId: fieldSettings[field.id],
-                        preview: true,
-                        field,
-                      })}
-                    </Text>
+                    <GenerateSample
+                      generatorId={fieldSettings[field.id]}
+                      field={field}
+                    />
                   </Box>
                 )}
               </Box>

@@ -24,7 +24,9 @@ interface GeneratorItem {
 
 interface Generators extends Array<GeneratorItem> {}
 
-const generateContent = (): { generators: Generators; generate: Function } => {
+const generateContent = (
+  base: any
+): { generators: Generators; generate: Function } => {
   const float: number = Math.random() * 100
   const integerNumber: number = Math.floor(float)
   const boolean: boolean = Math.random() > 0.5
@@ -283,14 +285,67 @@ const generateContent = (): { generators: Generators; generate: Function } => {
       types: [FieldType.PHONE_NUMBER],
       generate: (preview) => randomMobile({ formatted: preview }),
     },
+    {
+      id: 'singleLink',
+      name: 'Single link',
+      types: [FieldType.MULTIPLE_RECORD_LINKS],
+      generate: async (preview, field) => {
+        const fieldTable = base.getTableByIdIfExists(
+          field.options.linkedTableId
+        )
+        const query = await fieldTable.selectRecordsAsync()
+        if (!query.recordIds.length) {
+          return null
+        }
+        const recordId =
+          query.recordIds[Math.floor(Math.random() * query.recordIds.length)]
+        query.unloadData()
+        if (preview) {
+          return `Record ${recordId}`
+        }
+        return [{ id: recordId }]
+      },
+    },
+    {
+      id: 'multipleLinks',
+      name: 'Multiple links',
+      types: [FieldType.MULTIPLE_RECORD_LINKS],
+      generate: async (preview, field) => {
+        const fieldTable = base.getTableByIdIfExists(
+          field.options.linkedTableId
+        )
+        const query = await fieldTable.selectRecordsAsync()
+        if (!query.recordIds.length) {
+          return null
+        }
+        let records = []
+        for (let i = 0; i < Math.floor(Math.random() * 5); i++) {
+          records.push(
+            query.recordIds[Math.floor(Math.random() * query.recordIds.length)]
+          )
+        }
+        records = records.filter((value, index, self) => {
+          return self.indexOf(value) === index
+        })
+        query.unloadData()
+        if (preview) {
+          return `Records ${records.join(',')}`
+        }
+        return records.map((id) => ({ id }))
+      },
+    },
   ]
 
-  const generate = ({ generatorId, preview = false, field }): string | null => {
+  const generate = async ({
+    generatorId,
+    preview = false,
+    field,
+  }): string | null => {
     const generator = generators.find(
       (generator) => generator.id === generatorId
     )
     if (generator && generator.generate) {
-      return generator.generate(preview, field)
+      return await generator.generate(preview, field)
     }
     return null
   }
