@@ -11,7 +11,7 @@ const GenerateResult = ({ generated, numberOfRecords, onDone }) => (
     {generated === numberOfRecords ? (
       <Box margin="1rem 0">
         <Text>Done generating records.</Text>
-        <Button variant="primary" onClick={onDone}>
+        <Button variant="primary" onClick={onDone} marginTop="1rem">
           Start over
         </Button>
       </Box>

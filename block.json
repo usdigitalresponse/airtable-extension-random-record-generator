@@ -1,4 +1,5 @@
 {
   "version": "1.0",
-  "frontendEntry": "./frontend/index.js"
+  "frontendEntry": "./frontend/index.js",
+  "frontendTestingEntry": "./test/index.js"
 }

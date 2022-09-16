@@ -141,27 +141,40 @@ const GenerateRecordForm = ({ table }) => {
               paddingTop="0.5rem"
             >
               <Box width="50%">
-                <FormField label={field.name}>
-                  <Select
-                    value={fieldSettings[field.id]}
-                    onChange={(newValue) => {
-                      const newSettings = { ...fieldSettings }
-                      newSettings[field.id] = newValue
-                      setFieldSettings(newSettings)
-                    }}
-                    options={[
-                      { label: 'None', value: false },
-                      ...generators
-                        .filter((generator) =>
-                          generator.types.includes(field.type)
-                        )
-                        .map((generator) => ({
-                          label: generator.name,
-                          value: generator.id,
-                        })),
-                    ]}
-                  />
-                </FormField>
+                {table.checkPermissionsForCreateRecord({ [field.id]: null })
+                  .hasPermission ? (
+                  <FormField label={field.name}>
+                    <Select
+                      value={fieldSettings[field.id]}
+                      onChange={(newValue) => {
+                        const newSettings = { ...fieldSettings }
+                        newSettings[field.id] = newValue
+                        setFieldSettings(newSettings)
+                      }}
+                      options={[
+                        { label: 'None', value: false },
+                        ...generators
+                          .filter((generator) =>
+                            generator.types.includes(field.type)
+                          )
+                          .map((generator) => ({
+                            label: generator.name,
+                            value: generator.id,
+                          })),
+                      ]}
+                    />
+                  </FormField>
+                ) : (
+                  <Text
+                    textColor={colorUtils.getHexForColor(colors.RED_DARK_1)}
+                  >
+                    {
+                      table.checkPermissionsForCreateRecord({
+                        [field.id]: null,
+                      }).reasonDisplayString
+                    }
+                  </Text>
+                )}
               </Box>
               <Box width="50%">
                 {fieldSettings[field.id] && (

@@ -3,10 +3,12 @@
   "description": "Randomly generates Airtable records",
   "license": "Apache-2.0",
   "scripts": {
-    "lint": "eslint frontend test"
+    "lint": "eslint frontend test",
+    "test:jsdom": "jest --testMatch '**/*.jsdom.test.js'"
   },
   "dependencies": {
     "@airtable/blocks": "1.8.0",
+    "@testing-library/user-event": "^12.8.3",
     "lorem-ipsum": "^2.0.8",
     "random-mobile": "^1.0.2",
     "react": "^16.13.0",
@@ -16,11 +18,20 @@
   },
   "devDependencies": {
     "@airtable/blocks-testing": "^0.0.4",
-    "@types/react": "^18.0.19",
-    "@types/react-dom": "^18.0.6",
-    "eslint": "^6.8.0",
-    "eslint-plugin-react": "^7.18.3",
-    "eslint-plugin-react-hooks": "^2.5.0",
-    "mocha": "^10.0.0"
+    "@sheerun/mutationobserver-shim": "^0.3.3",
+    "@testing-library/cypress": "^7.0.3",
+    "@testing-library/dom": "^7.29.0",
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/user-event": "^12.5.0",
+    "core-js": "^3.8.1",
+    "cypress": "^6.2.0",
+    "eslint": "^6.3.0",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^2.0.1",
+    "geckodriver": "^2.0.2",
+    "jest": "^24.9.0",
+    "selenium-webdriver": "^4.0.0-alpha.8",
+    "start-server-and-test": "^1.11.6"
   }
 }
