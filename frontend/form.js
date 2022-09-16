@@ -12,7 +12,7 @@ import {
   useBase,
 } from '@airtable/blocks/ui'
 import generateContent from './generators'
-import GenerateResult from './generate-result'
+import GenerateResults from './results'
 import React, { useEffect, useState } from 'react'
 
 const GenerateRecordForm = ({ table }) => {
@@ -62,6 +62,8 @@ const GenerateRecordForm = ({ table }) => {
   }
 
   const generateRecords = async () => {
+    const batchSize = 50
+    const recordsToInsert = []
     for (let i = 0; i < numberOfRecords; i++) {
       const { generate } = generateContent(base)
       const record = {}
@@ -73,14 +75,20 @@ const GenerateRecordForm = ({ table }) => {
           })
         }
       }
-      await table.createRecordAsync(record)
-      setGenerated(i + 1)
+      recordsToInsert.push({ fields: record })
+    }
+    let i = 0
+    while (i < recordsToInsert.length) {
+      const recordBatch = recordsToInsert.slice(i, i + batchSize)
+      await table.createRecordsAsync(recordBatch)
+      i += batchSize
+      setGenerated(i)
     }
   }
 
   if (isGenerating) {
     return (
-      <GenerateResult
+      <GenerateResults
         generated={generated}
         numberOfRecords={numberOfRecords}
         onDone={() => {
