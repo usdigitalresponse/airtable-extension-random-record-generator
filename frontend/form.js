@@ -81,7 +81,7 @@ const GenerateRecordForm = ({ table }) => {
     while (i < recordsToInsert.length) {
       const recordBatch = recordsToInsert.slice(i, i + batchSize)
       await table.createRecordsAsync(recordBatch)
-      i += batchSize
+      i += recordBatch.length
       setGenerated(i)
     }
   }

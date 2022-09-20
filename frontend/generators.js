@@ -276,7 +276,7 @@ const generateContent = (base) => {
         )
         const query = await fieldTable.selectRecordsAsync()
         if (!query.recordIds.length) {
-          return null
+          return preview ? 'Cannot load record' : null
         }
         const recordId =
           query.recordIds[Math.floor(Math.random() * query.recordIds.length)]
