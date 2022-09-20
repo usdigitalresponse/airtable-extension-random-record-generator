@@ -62,7 +62,7 @@ const GenerateRecordForm = ({ table }) => {
   }
 
   const generateRecords = async () => {
-    const batchSize = 50
+    const batchSize = 10
     const recordsToInsert = []
     for (let i = 0; i < numberOfRecords; i++) {
       const { generate } = generateContent(base)

@@ -20,12 +20,12 @@ const RandomRecordGeneratorApp = () => {
 
   return (
     <Box width="90%" margin="1.5rem auto">
-      <Heading>Random record generator</Heading>
       {table && (
         <>
           <Text>
-            Generate unique records for <strong>{table.name}</strong>
+            Generate random records for <strong>{table.name}</strong>.{' '}
           </Text>
+
           {checkTablePermission.hasPermission ? (
             <GenerateRecordForm table={table} />
           ) : (
