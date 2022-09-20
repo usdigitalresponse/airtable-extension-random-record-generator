@@ -278,13 +278,13 @@ const generateContent = (base) => {
         if (!query.recordIds.length) {
           return preview ? 'Cannot load record' : null
         }
-        const recordId =
-          query.recordIds[Math.floor(Math.random() * query.recordIds.length)]
+        const record =
+          query.records[Math.floor(Math.random() * query.records.length)]
+        const result = preview
+          ? `Record ${record.name || record.id}`
+          : [{ id: record.id }]
         query.unloadData()
-        if (preview) {
-          return `Record ${recordId}`
-        }
-        return [{ id: recordId }]
+        return result
       },
     },
     {
@@ -297,22 +297,24 @@ const generateContent = (base) => {
         )
         const query = await fieldTable.selectRecordsAsync()
         if (!query.recordIds.length) {
-          return null
+          return preview ? 'Cannot load records' : null
         }
         let records = []
         for (let i = 0; i < Math.floor(Math.random() * 5); i++) {
           records.push(
-            query.recordIds[Math.floor(Math.random() * query.recordIds.length)]
+            query.records[Math.floor(Math.random() * query.records.length)]
           )
         }
         records = records.filter((value, index, self) => {
           return self.indexOf(value) === index
         })
+        const result = preview
+          ? `Records ${records
+              .map((record) => record.name || record.id)
+              .join(',')}`
+          : records.map((id) => ({ id }))
         query.unloadData()
-        if (preview) {
-          return `Records ${records.join(',')}`
-        }
-        return records.map((id) => ({ id }))
+        return result
       },
     },
   ]
