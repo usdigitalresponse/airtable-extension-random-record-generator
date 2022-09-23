@@ -12,7 +12,7 @@ This extension is not yet published in the Airtable Marketplace. To install it i
 - Click the small plus sign (sometimes it says "Build a custom extension" next to it)
   <img width="106" alt="image" src="https://user-images.githubusercontent.com/270536/191860246-6acdbdf0-a2c1-4b27-8ba1-cb7ee74870e8.png">
 - Give your extension a name.
-- Follow the commands for setting up Airtable Blocks CLI if you haven't already installed it
+- Follow the commands for setting up Airtable Blocks CLI if you haven't already installed it. Click to the next step in Airtable.
 - Copy the `block init` command, and change the `template` argument to this repo, so the command will look like:
   `block init app[something]/blk[something] --template=https://github.com/kevee/airtable-extension-random-record-generator app_name`
 - Move to your directory and run `block release` to deploy the extension to your base.
