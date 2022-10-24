@@ -1,5 +1,4 @@
 import {
-  initializeBlock,
   Box,
   Heading,
   useBase,

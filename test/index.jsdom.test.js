@@ -11,7 +11,7 @@ import {
   getNodeText,
 } from '@testing-library/react'
 import baseFixture from './fixtures/base'
-import RandomRecordGeneratorApp from '../frontend/app'
+import RandomRecordGeneratorApp from '../frontend/random-name-generator'
 import userEvent from '@testing-library/user-event'
 
 const openAsync = async (table, view, field) => {
@@ -39,7 +39,7 @@ const openAsync = async (table, view, field) => {
   return waitFor(() => screen.getByRole('button', { name: 'Add' }))
 }
 
-describe('TodoApp', () => {
+describe('RandomRecordGeneratorApp', () => {
   let mutations
   let addMutation = (mutation) => mutations.push(mutation)
   let testDriver

@@ -24,6 +24,7 @@ const GenerateRecordForm = ({ table }) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [isGenerating, setIsGenerating] = useState(false)
   const [generated, setGenerated] = useState(0)
+  const [hasError, setHasError] = useState(false)
 
   const { generators, generate } = generateContent(base)
 
@@ -94,6 +95,9 @@ const GenerateRecordForm = ({ table }) => {
         onDone={() => {
           setIsGenerating(false)
           setGenerated(0)
+          setFieldSettings(
+            Object.fromEntries(table.fields.map((field) => [field.id, false]))
+          )
         }}
       />
     )
@@ -123,10 +127,36 @@ const GenerateRecordForm = ({ table }) => {
           <Input
             type="number"
             value={numberOfRecords + ''}
-            onChange={(event) =>
-              setNumberOfRecords(parseInt(event.target.value, 10))
-            }
+            max={1000}
+            min={1}
+            onChange={(event) => {
+              const newValue = parseInt(event.target.value, 10)
+              setNumberOfRecords(newValue)
+              if (newValue > 1000 || !newValue || event.target.value === '') {
+                setHasError(true)
+              } else {
+                setHasError(false)
+              }
+            }}
           />
+          {numberOfRecords > 1000 && (
+            <Box
+              padding="1rem"
+              marginTop="1rem"
+              backgroundColor={colors.RED_LIGHT_2}
+            >
+              You can only generate up to 1000 records at a time.
+            </Box>
+          )}
+          {!numberOfRecords && (
+            <Box
+              padding="1rem"
+              marginTop="1rem"
+              backgroundColor={colors.RED_LIGHT_2}
+            >
+              You must at least generate one record.
+            </Box>
+          )}
         </FormField>
         <Box
           margin="1rem 0"
@@ -200,6 +230,7 @@ const GenerateRecordForm = ({ table }) => {
         <Box>
           <Button
             variant="primary"
+            disabled={hasError}
             onClick={() => {
               setIsDialogOpen(true)
             }}
