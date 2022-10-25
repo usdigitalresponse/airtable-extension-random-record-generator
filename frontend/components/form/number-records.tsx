@@ -18,6 +18,7 @@ const NumberOfRecords: React.FC<Props> = ({
       value={numberOfRecords + ''}
       max={1000}
       min={1}
+      width={100}
       onChange={(event) => {
         const newValue = parseInt(event.target.value, 10)
         setNumberOfRecords(newValue)
