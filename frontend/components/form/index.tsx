@@ -105,6 +105,7 @@ const GenerateRecordForm: React.FC<Props> = ({ table }) => {
         <Box marginY={2} paddingY={2} borderTop="thick">
           {table.fields.map((field) => (
             <FieldSelect
+              key={field.id}
               table={table}
               field={field}
               fieldSettings={fieldSettings}
