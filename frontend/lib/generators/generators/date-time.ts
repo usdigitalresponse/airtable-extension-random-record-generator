@@ -6,9 +6,9 @@ const DateTimeGenerator = (): Generator => ({
   name: 'Date & time',
   types: [FieldType.DATE_TIME],
   generate: () =>
-    new Date(new Date().getTime() + Math.random() * 100 * 1000 * 60 * 60 * 24)
-      .toISOString()
-      .split('T')[0],
+    new Date(
+      new Date().getTime() + Math.random() * 100 * 1000 * 60 * 60 * 24
+    ).toISOString(),
 })
 
 export default DateTimeGenerator
