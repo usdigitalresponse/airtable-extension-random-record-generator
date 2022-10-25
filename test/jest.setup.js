@@ -12,6 +12,5 @@ if (typeof window === 'object' && window) {
       'MutationObserver present in `window`. If this is expected, remove the `@sheerun/mutationobserver-shim` package.'
     )
   }
-  console.log('HIIII')
   window.MutationObserver = MutationObserver
 }

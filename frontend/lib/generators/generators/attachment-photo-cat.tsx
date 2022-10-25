@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { FieldType } from '@airtable/blocks/models'
 import Generator from './generator'
 

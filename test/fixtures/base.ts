@@ -1,6 +1,5 @@
 import { FieldType, ViewType } from '@airtable/blocks/models'
-import { mockSdkWithFixtureData } from '@airtable/blocks/testing'
-export default mockSdkWithFixtureData({
+export default {
   base: {
     id: 'appRandomRecordGenerator',
     name: 'Random record generator',
@@ -298,6 +297,22 @@ export default mockSdkWithFixtureData({
         records: [],
       },
     ],
-    collaborators: [],
+    collaborators: [
+      {
+        id: 'usrGeraldineOsins',
+        name: 'Geraldine Osinski',
+        email: 'geraldine.osinski@airtable.test',
+        profilePicUrl:
+          'https://dl.airtable.test/.profilePics/usrGeraldineOsins',
+        isActive: true,
+      },
+      {
+        id: 'usrLyndaPurdy',
+        name: 'Lynda Purdy',
+        email: 'lynda.purdy@airtable.test',
+        profilePicUrl: 'https://dl.airtable.test/.profilePics/usrLyndaPurdy',
+        isActive: true,
+      },
+    ],
   },
-})
+}

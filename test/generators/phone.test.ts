@@ -6,7 +6,7 @@ describe('Generators', () => {
       const generator = PhoneGenerator()
       console.log(generator.generate())
       expect(typeof generator.generate()).toBe('string')
-      expect(generator.generate().length).toBe(12)
+      expect(generator.generate(true).length).toBe(12)
     })
   })
 })

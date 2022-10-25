@@ -1,5 +1,5 @@
 import { FieldType } from '@airtable/blocks/models'
-import randomMobile from 'random-mobile'
+import * as randomMobile from 'random-mobile'
 import Generator from './generator'
 
 const PhoneGenerator = (): Generator => ({

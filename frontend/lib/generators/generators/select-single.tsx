@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { ChoiceToken } from '@airtable/blocks/ui'
 import { FieldType } from '@airtable/blocks/models'
 import Generator from './generator'

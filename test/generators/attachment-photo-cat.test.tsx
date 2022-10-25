@@ -5,6 +5,10 @@ import React from 'react'
 import AttachmentPhotoCatGenerator from '../../frontend/lib/generators/generators/attachment-photo-cat'
 
 describe('Generators', () => {
+  beforeAll(() => {
+    // @ts-ignore
+    window.__getAirtableInterfaceAtVersion = () => 1
+  })
   describe('Attachment: Cat Photo', () => {
     it('Generates a random cat photo', () => {
       const generator = AttachmentPhotoCatGenerator()

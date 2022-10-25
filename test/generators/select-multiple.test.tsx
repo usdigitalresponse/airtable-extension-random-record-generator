@@ -1,8 +1,10 @@
 /**
  * @jest-environment jsdom
  */
+import * as React from 'react'
 import TestDriver from '@airtable/blocks-testing'
 import SelectMultipleGenerator from '../../frontend/lib/generators/generators/select-multiple'
+import fixtureBase from '../fixtures/base'
 
 const choices = [
   { id: 1, name: 'Choice 1' },
@@ -12,11 +14,16 @@ const choices = [
 ]
 
 describe('Generators', () => {
+  beforeAll(() => {
+    new TestDriver(fixtureBase)
+  })
   describe('Select: multiple', () => {
     it('Selects multiple items', () => {
       const generator = SelectMultipleGenerator()
-      console.log(generator.generate(false, { options: { choices } }))
       expect(generator.generate(false, { options: { choices } })).toBeTruthy()
+      expect(
+        generator.generate(false, { options: { choices: [choices[0]] } }).length
+      ).toBe(1)
     })
   })
 })
