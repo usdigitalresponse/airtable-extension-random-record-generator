@@ -1,3 +1,5 @@
+[![Test](https://github.com/usdigitalresponse/airtable-extension-random-record-generator/actions/workflows/test.yml/badge.svg)](https://github.com/usdigitalresponse/airtable-extension-random-record-generator/actions/workflows/test.yml)
+
 # Random record generator
 
 An Airtable extension that makes generating fake records for the purpose of demonstrating bases.
