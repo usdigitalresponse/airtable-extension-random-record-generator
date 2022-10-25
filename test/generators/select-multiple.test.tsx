@@ -1,7 +1,6 @@
 /**
  * @jest-environment jsdom
  */
-import * as React from 'react'
 import TestDriver from '@airtable/blocks-testing'
 import SelectMultipleGenerator from '../../frontend/lib/generators/generators/select-multiple'
 import fixtureBase from '../fixtures/base'

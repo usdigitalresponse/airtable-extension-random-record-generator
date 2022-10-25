@@ -6,7 +6,11 @@ An Airtable extension that makes generating fake records for the purpose of demo
 
 ## Installation
 
-This extension is not yet published in the Airtable Marketplace. To install it into a base:
+Add this extension [through the Airtable marketplace](https://airtable.com/marketplace/blkuZ6kbfEjCTxSNV/random-record-generator).
+
+## Development
+
+To start developing on this extension:
 
 - Open your base, click **Extensions**, then **Add an extension**
 - Click the small plus sign (sometimes it says "Build a custom extension" next to it)

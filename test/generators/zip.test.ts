@@ -1,4 +1,3 @@
-import states from 'states-us'
 import ZipGenerator from '../../frontend/lib/generators/generators/zip'
 
 describe('Generators', () => {

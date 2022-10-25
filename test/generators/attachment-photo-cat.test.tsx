@@ -1,7 +1,6 @@
 /**
  * @jest-environment jsdom
  */
-import React from 'react'
 import AttachmentPhotoCatGenerator from '../../frontend/lib/generators/generators/attachment-photo-cat'
 
 describe('Generators', () => {

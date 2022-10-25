@@ -14,17 +14,17 @@ const Sample: React.FC<Props> = ({ generatorId, field }) => {
 
   const { generate } = generateContent(base)
 
-  if (!generatorId || !field) {
-    return null
-  }
-
   useEffect(() => {
     generate({
       generatorId,
       preview: true,
       field,
     }).then((result) => setValue(result))
-  }, [generatorId, field])
+  }, [generatorId, field, generate])
+
+  if (!generatorId || !field) {
+    return null
+  }
 
   return (
     <>

@@ -1,4 +1,4 @@
-import { FieldType, Field } from '@airtable/blocks/models'
+import { FieldType } from '@airtable/blocks/models'
 
 interface Generator {
   id: string
