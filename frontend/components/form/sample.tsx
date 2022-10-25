@@ -20,7 +20,7 @@ const Sample: React.FC<Props> = ({ generatorId, field }) => {
       preview: true,
       field,
     }).then((result) => setValue(result))
-  }, [generatorId, field, generate])
+  }, [generatorId, field])
 
   if (!generatorId || !field) {
     return null
