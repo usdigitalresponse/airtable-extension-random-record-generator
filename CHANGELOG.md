@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.4] - 2024-01-17
+
+### Fixed
+
+- Added separate zip code generator for handling single line text vs. number fields.
+
 ## [0.0.3] - 2022-10-25
 
 ### Added

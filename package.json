@@ -2,6 +2,7 @@
   "name": "airtable-extension-random-record-generator",
   "description": "Randomly generates Airtable records",
   "license": "Apache-2.0",
+  "version": "0.0.4",
   "scripts": {
     "lint": "eslint --ext .js,.jsx,.ts,.tsx frontend test",
     "test": "npm run lint && npm run test:jsdom",

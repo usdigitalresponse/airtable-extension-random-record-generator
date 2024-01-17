@@ -11,6 +11,7 @@ import EmailHumanGenerator from './email-human'
 import AddressGenerator from './address'
 import CityGenerator from './city'
 import ZipGenerator from './zip'
+import ZipStringGenerator from './zip-string'
 import StateAbbreviationGenerator from './state-abbreviation'
 import StateNameGenerator from './state-name'
 import CheckboxGenerator from './checkbox'
@@ -40,6 +41,7 @@ const generators = [
   AddressGenerator,
   CityGenerator,
   ZipGenerator,
+  ZipStringGenerator,
   StateAbbreviationGenerator,
   StateNameGenerator,
   CheckboxGenerator,
