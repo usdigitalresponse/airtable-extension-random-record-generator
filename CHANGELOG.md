@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0] - 2024-01-17
+
+### Added
+
+- Automated testing using Airtable block testing framework
+- You can now save a table's configuration for re-use later
+
+### Changed
+
+- Used [faker](https://www.npmjs.com/package/@faker-js/faker) to generate random data
+- Rewrote extension in TypeScript
+
 ## [0.0.4] - 2024-01-17
 
 ### Fixed
