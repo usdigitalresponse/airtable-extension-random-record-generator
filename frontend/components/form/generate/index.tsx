@@ -33,7 +33,9 @@ const GenerateRecords: React.FC<Props> = ({
   const generateRecords = async () => {
     for (let i = 0; i < numberOfRecords; i++) {
       const recordData = {}
-      for (const fieldConfiguration of fieldConfigurations) {
+      for (const fieldConfiguration of fieldConfigurations.filter(
+        (fieldConfiguration) => fieldConfiguration.generator
+      )) {
         recordData[fieldConfiguration.field.id] = await generate({
           id: fieldConfiguration.generator,
           base,

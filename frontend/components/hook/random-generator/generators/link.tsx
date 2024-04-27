@@ -15,7 +15,9 @@ const getLinkedRecordIds = async ({
   base,
   multiple,
 }: LinkedRecordOptions): Promise<Record[] | null> => {
-  const fieldTable = base.getTableByIdIfExists(field.options.linkedTableId)
+  const fieldTable = base.getTableByIdIfExists(
+    field.options.linkedTableId as string
+  )
   if (!fieldTable) {
     return
   }
@@ -65,7 +67,7 @@ const link: RandomGenerator = {
   optionsForm: ({ field, options, setOptions }) => (
     <Switch
       value={options.multiple}
-      disabled={field?.options?.prefersSingleRecordLink}
+      disabled={field?.options?.prefersSingleRecordLink ? true : false}
       onChange={(newValue) => setOptions({ multiple: newValue })}
       label="Allow multiple links"
     />

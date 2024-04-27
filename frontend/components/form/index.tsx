@@ -27,7 +27,7 @@ const RandomRecordForm: React.FC = () => {
     FieldConfiguration[]
   >([])
   const globalConfig = useGlobalConfig()
-  const savedSettings: SavedSettings[] = globalConfig.get('savedSettings') || []
+  const savedSettings: any = globalConfig.get('savedSettings') || []
 
   /**
    * Save the current form state to the global config. This will allow the user
@@ -92,7 +92,7 @@ const RandomRecordForm: React.FC = () => {
   return (
     <>
       {isGenerating && (
-        <Dialog>
+        <Dialog onClose={() => {}}>
           <GenerateRecords
             table={table}
             numberOfRecords={numberOfRecords}

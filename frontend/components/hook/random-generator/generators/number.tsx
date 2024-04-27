@@ -44,7 +44,7 @@ const currency: RandomGenerator = {
   types: [FieldType.CURRENCY],
   preview: ({ field }) =>
     faker.finance.amount({ symbol: field.options.symbol }),
-  generate: () => parseFloat(faker.finance.amount(), 10),
+  generate: () => parseFloat(faker.finance.amount()),
 }
 
 export default [number, currency]
