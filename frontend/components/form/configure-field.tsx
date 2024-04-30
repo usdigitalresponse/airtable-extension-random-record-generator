@@ -47,13 +47,13 @@ const ConfigureField: React.FC<Props> = ({
         <FormField label={field.name} flex={1} marginBottom={0}>
           <Select
             options={[
-              ...(generator ? [{ value: '_NONE', label: ' - None - ' }] : []),
+              { value: '_NONE', label: ' - None - ' },
               ...getGeneratorsForType(field.type).map((generator) => ({
                 value: generator.id,
                 label: generator.name,
               })),
             ]}
-            value={generator}
+            value={generator || '_NONE'}
             onChange={(newValue) => {
               const newGenerator = newValue.toString()
               setFieldConfiguration({
@@ -85,7 +85,11 @@ const ConfigureField: React.FC<Props> = ({
         </Box>
       </Box>
       {generator && (
-        <Box marginTop={2}>
+        <Box
+          marginTop={2}
+          role="aside"
+          aria-label={`Preview for ${field.name}`}
+        >
           <Text textColor="light" fontWeight={500}>
             Preview
           </Text>
