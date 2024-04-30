@@ -10,27 +10,20 @@ const rating: RandomGenerator = {
   generate: ({ field }) => {
     return faker.number.int({ min: 0, max: field.options.max })
   },
-  preview: ({ field }) => {
-    console.log(
-      Array.from({
-        length: faker.number.int({ min: 0, max: field.options.max }),
-      })
-    )
-    return (
-      <>
-        {Array.from({
-          length: faker.number.int({ min: 1, max: field.options.max }),
-        }).map((_, index) => (
-          <Icon
-            name={field.options.icon}
-            marginLeft={2}
-            key={index}
-            fillColor={colorUtils.getHexForColor(field.options.color)}
-          />
-        ))}
-      </>
-    )
-  },
+  preview: ({ field }) => (
+    <>
+      {Array.from({
+        length: faker.number.int({ min: 1, max: field.options.max }),
+      }).map((_, index) => (
+        <Icon
+          name={field.options.icon}
+          marginLeft={2}
+          key={index}
+          fillColor={colorUtils.getHexForColor(field.options.color)}
+        />
+      ))}
+    </>
+  ),
 }
 
 export default [rating]

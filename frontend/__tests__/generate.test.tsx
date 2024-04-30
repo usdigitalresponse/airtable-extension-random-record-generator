@@ -412,6 +412,40 @@ describe('Generates records with every generator type', () => {
     })
   })
 
+  describe('Internet generators', () => {
+    for (const generator of [
+      'userName',
+      'email',
+      'emoji',
+      'ipAddress',
+      'url',
+    ]) {
+      it(`Generates a record with ${generator}`, async () => {
+        userEvent.selectOptions(
+          screen.getByRole('combobox', { name: /name/i }),
+          getSelectValue(generator)
+        )
+
+        await screen.findByRole('aside', { name: /preview for name/i })
+        expect(
+          screen.getByRole('aside', { name: /preview for name/i })
+        ).toBeInTheDocument()
+        await act(async () => {
+          userEvent.click(
+            screen.getByRole('button', { name: /generate random records/i })
+          )
+        })
+
+        await screen.findByRole('progressbar')
+
+        expect(mutations[0].type).toBe('createMultipleRecords')
+        expect(mutations[0].records[0].cellValuesByFieldId).toHaveProperty(
+          'fldName'
+        )
+      })
+    }
+  })
+
   describe('Percent generators', () => {
     it('Generates a record with a percentage', async () => {
       userEvent.selectOptions(
@@ -721,7 +755,7 @@ describe('Generates records with every generator type', () => {
     it('Generates a record with a single-select field', async () => {
       userEvent.selectOptions(
         screen.getByRole('combobox', { name: /status/i }),
-        getSelectValue('multipleSelect')
+        getSelectValue('singleSelect')
       )
 
       await screen.findByRole('aside', {

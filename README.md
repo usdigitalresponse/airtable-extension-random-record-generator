@@ -14,64 +14,99 @@ Add this extension [through the Airtable marketplace](https://airtable.com/marke
 
 To start developing on this extension:
 
-- Open your base, click **Extensions**, then **Add an extension**
+- Open your base click **Extensions** then **Add an extension**
 - Click the small plus sign (sometimes it says "Build a custom extension" next to it)
   <img width="106" alt="image" src="https://user-images.githubusercontent.com/270536/191860246-6acdbdf0-a2c1-4b27-8ba1-cb7ee74870e8.png">
 - Give your extension a name.
 - Follow the commands for setting up Airtable Blocks CLI if you haven't already installed it. Click to the next step in Airtable.
-- Copy the `block init` command, and change the `template` argument to this repo, so the command will look like:
+- Copy the `block init` command and change the `template` argument to this repo so the command will look like:
   `block init app[something]/blk[something] --template=https://github.com/kevee/airtable-extension-random-record-generator app_name`
 - Move to your directory and run `block release` to deploy the extension to your base.
 
-## Field type support
+## Random generators
 
-Supports the following field types and random generators. Examples included:
-
-- **Single line text**
-  - Animal name, first: "Aaron"
-  - Animal name, last: "Ant"
-  - Animal name, full: "Aaron Ant"
-  - Human name, first: "Aaron"
-  - Human name, last: "Anderson"
-  - Human name, full: "Aaron Anderson"
-  - Lorem Ipsum, single sentence: "Lorem ipsum...."
-  - Address: "123 Main St."
-  - City: "New York"
-  - State, abbreviation: "CA"
-  - State, name: "California"
-- **Multi-line text**
-  - Lorem Ipsum, single sentence or multi-paragraph
-- **Email**
-  - Animal name email: "aant@gmail.fake-email.com"
-  - Human name email: "aanderson@gmail.fake-email.com"
-- **Checkbox**
-  - Random check: Randomly checks the box
-- **Number field**
-  - Random integer or float: 45, 34.222
-- **Date**
-  - Random date: 2014-10-20
-  - Random date and time: 2021-05-06T15:23:00
 - **Attachments**
-  - Random cat photo
-  - A sample PDF file
-- **Single and multi-select**
-  - Random selection from the select options
-- **Phone number**
-  - Random phone number
-- **Linked record**
-  - Random single linked record
-  - Random multiple linked records
+- PDF files
+- Images of:
+  - Abstract
+  - Animals
+  - Business
+  - Cats
+  - City
+  - Fashion
+  - Food
+  - Nature
+  - People
+  - Sports
+  - Transport
+- ** Checkbox**
+  - Randomly toggle a checkbox on or off
+- **Date**
+  - Dates with a variety of options for before/after ranges
+  - Dates and times with a variety of options for before/after ranges
+- **Duration**
+  - Random duration in seconds
+- **Internet**
+  - Usernames
+  - Emoji
+  - Email addresses
+  - URLs
+  - IP addresses
+  - Usernames
+- **Link to records**
+  - Single links to other records
+  - Multiple links to other records
+- **Location**
+  - City
+  - Country
+  - Country code
+  - County
+  - Latitude
+  - Longitude
+  - Secondary address
+  - State (Full name or abbreviation)
+  - Street Address
+  - Street name
+  - Timezone
+  - Zip code
+- **Lorem Ipsum**
+  - Words
+  - Sentences
+  - Paragraphs
+- **Numbers**
+  - Numbers
+  - Numbers with a range
+  - Numbers with a decimal range
+  - Currencies
+- **Percentage**
+  - Random percentage
+- **People**
+  - Bio
+  - First Name
+  - Full Name
+  - Gender
+  - Job Title
+  - Job Type
+  - Last Name
+  - Sex
+- **Phone**
+  - Phone numbers
+  - International phone numbers
+- **Rating**
+  - Random rating
+- **Select**
+  - Randomly select from a list of options
 
 ## Code of Conduct
 
-This repository falls under [U.S. Digital Response’s Code of Conduct](./CODE_OF_CONDUCT.md), and we will hold all participants in issues, pull requests, discussions, and other spaces related to this project to that Code of Conduct. Please see [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) for the full code.
+This repository falls under [U.S. Digital Response’s Code of Conduct](./CODE_OF_CONDUCT.md) and we will hold all participants in issues pull requests discussions and other spaces related to this project to that Code of Conduct. Please see [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) for the full code.
 
 ## License & Copyright
 
 Copyright (C) 2022 U.S. Digital Response (USDR)
 
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use this software except in compliance with the License. You may obtain a copy of the License at:
+Licensed under the Apache License Version 2.0 (the "License"); you may not use this software except in compliance with the License. You may obtain a copy of the License at:
 
 [`LICENSE`](./LICENSE) in this repository or http://www.apache.org/licenses/LICENSE-2.0
 
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+Unless required by applicable law or agreed to in writing software distributed under the License is distributed on an "AS IS" BASIS WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND either express or implied. See the License for the specific language governing permissions and limitations under the License.
