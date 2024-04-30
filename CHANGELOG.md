@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Automated testing using Airtable block testing framework
 - You can now save a table's configuration for re-use later
+- Tables are chosen using a dropdown instead of selecting a table in the data view
+- Over 20 new generator types for locations, lat long, and demographic information
 
 ### Changed
 
