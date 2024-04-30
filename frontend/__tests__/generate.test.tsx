@@ -2,7 +2,7 @@ import React from 'react'
 import { render, screen, act } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
-import testDriver from '../../test/driver'
+import testDriver from '_test/driver'
 import RandomRecordGeneratorApp from '../app'
 
 const getSelectValue = (value: string): string =>
