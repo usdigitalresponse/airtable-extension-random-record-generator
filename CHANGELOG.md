@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2024-01-17
+
+### Added
+
+- Automated testing using Airtable block testing framework
+- You can now save a table's configuration for re-use later
+- Tables are chosen using a dropdown instead of selecting a table in the data view
+- Over 20 new generator types for locations, lat long, and demographic information
+
+### Changed
+
+- Used [faker](https://www.npmjs.com/package/@faker-js/faker) to generate random data
+- Rewrote extension in TypeScript
+
 ## [0.0.4] - 2024-01-17
 
 ### Fixed
