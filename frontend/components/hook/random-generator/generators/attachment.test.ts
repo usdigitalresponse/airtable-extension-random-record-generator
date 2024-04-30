@@ -1,4 +1,3 @@
-import TestDriver from '@airtable/blocks-testing'
 import '@testing-library/jest-dom'
 import attachmentGenerators from './attachment'
 

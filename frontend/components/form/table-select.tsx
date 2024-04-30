@@ -1,5 +1,5 @@
 import React from 'react'
-import { TablePicker, FormField, Box } from '@airtable/blocks/ui'
+import { TablePicker, FormField } from '@airtable/blocks/ui'
 import { Table } from '@airtable/blocks/models'
 import Alert from '../common/alert'
 

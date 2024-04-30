@@ -58,7 +58,7 @@ const image: RandomGenerator = {
   generate: ({ options }) => [
     { url: faker.image.urlLoremFlickr({ category: options.category }) },
   ],
-  preview: ({ options, field }) => (
+  preview: ({ options }) => (
     <img
       src={faker.image.urlLoremFlickr({
         category: options.category,

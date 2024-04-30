@@ -6,7 +6,7 @@ const singleSelect: RandomGenerator = {
   id: 'singleSelect',
   name: 'Single select',
   types: [FieldType.SINGLE_SELECT],
-  generate: ({ options, field }) =>
+  generate: ({ field }) =>
     field.options.choices[
       Math.floor(Math.random() * field.options.choices.length)
     ],
@@ -34,7 +34,7 @@ const multipleSelect: RandomGenerator = {
     return (
       <>
         {choices.map((choice) => (
-          <ChoiceToken choice={choice} marginRight={2} />
+          <ChoiceToken key={choice.id} choice={choice} marginRight={2} />
         ))}
       </>
     )

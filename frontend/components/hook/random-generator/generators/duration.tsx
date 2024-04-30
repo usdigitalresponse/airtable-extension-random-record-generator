@@ -1,5 +1,3 @@
-import React from 'react'
-import { Box, Icon } from '@airtable/blocks/ui'
 import { faker } from '@faker-js/faker'
 import { FieldType } from '@airtable/blocks/models'
 

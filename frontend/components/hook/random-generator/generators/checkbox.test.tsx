@@ -1,5 +1,3 @@
-import React from 'react'
-import TestDriver from '@airtable/blocks-testing'
 import checkboxGenerator from './checkbox'
 
 const [checkbox] = checkboxGenerator

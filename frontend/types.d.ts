@@ -1,3 +1,4 @@
+import React from 'react'
 import { FieldType, Field, Base } from '@airtable/blocks/models'
 
 interface GenerateOptions {

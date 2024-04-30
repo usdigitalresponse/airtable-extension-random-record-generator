@@ -113,7 +113,6 @@ const ConfigureField: React.FC<Props> = ({
       )}
     </Box>
   )
-  return null
 }
 
 export default ConfigureField

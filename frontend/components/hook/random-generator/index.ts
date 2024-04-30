@@ -1,4 +1,3 @@
-import { useBase } from '@airtable/blocks/ui'
 import { FieldType, Field, Base } from '@airtable/blocks/models'
 import generators from './generators'
 
@@ -6,8 +5,6 @@ import generators from './generators'
  * A hook that returns random generator functions.
  */
 const useRandomGenerator = () => {
-  const base = useBase()
-
   const getGenerators = (): RandomGenerator[] => generators
 
   /**
