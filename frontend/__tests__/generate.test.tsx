@@ -245,6 +245,253 @@ describe('Generates records with every generator type', () => {
     })
   })
 
+  describe('Location generators', () => {
+    it('Generates a record with zip code in a number field', async () => {
+      userEvent.selectOptions(
+        screen.getByRole('combobox', { name: /integer number/i }),
+        getSelectValue('zipCode')
+      )
+
+      await screen.findByRole('aside', { name: /preview for integer number/i })
+      expect(
+        screen.getByRole('aside', { name: /preview for integer number/i })
+      ).toBeInTheDocument()
+      await act(async () => {
+        userEvent.click(
+          screen.getByRole('button', { name: /generate random records/i })
+        )
+      })
+
+      await screen.findByRole('progressbar')
+
+      expect(mutations[0].type).toBe('createMultipleRecords')
+      expect(mutations[0].records[0].cellValuesByFieldId).toHaveProperty(
+        'fldIntegerNumber'
+      )
+    })
+
+    for (const generator of [
+      'zipCode',
+      'timeZone',
+      'streetAddress',
+      'streetName',
+      'state',
+      'secondaryAddress',
+      'latitude',
+      'longitude',
+      'county',
+      'country',
+      'countryCode',
+      'city',
+    ]) {
+      it(`Generates a record with ${generator}`, async () => {
+        userEvent.selectOptions(
+          screen.getByRole('combobox', { name: /name/i }),
+          getSelectValue(generator)
+        )
+
+        await screen.findByRole('aside', { name: /preview for name/i })
+        expect(
+          screen.getByRole('aside', { name: /preview for name/i })
+        ).toBeInTheDocument()
+        await act(async () => {
+          userEvent.click(
+            screen.getByRole('button', { name: /generate random records/i })
+          )
+        })
+
+        await screen.findByRole('progressbar')
+
+        expect(mutations[0].type).toBe('createMultipleRecords')
+        expect(mutations[0].records[0].cellValuesByFieldId).toHaveProperty(
+          'fldName'
+        )
+      })
+    }
+  })
+
+  describe('Lorem ipsum generators', () => {
+    for (const generator of ['slug', 'paragraph', 'paragraphs', 'sentence']) {
+      it(`Generates a record with ${generator}`, async () => {
+        userEvent.selectOptions(
+          screen.getByRole('combobox', { name: /notes/i }),
+          getSelectValue(generator)
+        )
+
+        await screen.findByRole('aside', { name: /preview for notes/i })
+        expect(
+          screen.getByRole('aside', { name: /preview for notes/i })
+        ).toBeInTheDocument()
+        await act(async () => {
+          userEvent.click(
+            screen.getByRole('button', { name: /generate random records/i })
+          )
+        })
+
+        await screen.findByRole('progressbar')
+
+        expect(mutations[0].type).toBe('createMultipleRecords')
+        expect(mutations[0].records[0].cellValuesByFieldId).toHaveProperty(
+          'fldNotes'
+        )
+      })
+    }
+  })
+
+  describe('Number generators', () => {
+    it('Generates a record with an integer number', async () => {
+      userEvent.selectOptions(
+        screen.getByRole('combobox', { name: /integer number/i }),
+        getSelectValue('number')
+      )
+
+      await screen.findByRole('aside', { name: /preview for integer number/i })
+      expect(
+        screen.getByRole('aside', { name: /preview for integer number/i })
+      ).toBeInTheDocument()
+      await act(async () => {
+        userEvent.click(
+          screen.getByRole('button', { name: /generate random records/i })
+        )
+      })
+
+      await screen.findByRole('progressbar')
+
+      expect(mutations[0].type).toBe('createMultipleRecords')
+      expect(mutations[0].records[0].cellValuesByFieldId).toHaveProperty(
+        'fldIntegerNumber'
+      )
+    })
+
+    it('Generates a record with an decimal number', async () => {
+      userEvent.selectOptions(
+        screen.getByRole('combobox', { name: /decimal number/i }),
+        getSelectValue('number')
+      )
+
+      await screen.findByRole('aside', { name: /preview for decimal number/i })
+      expect(
+        screen.getByRole('aside', { name: /preview for decimal number/i })
+      ).toBeInTheDocument()
+      await act(async () => {
+        userEvent.click(
+          screen.getByRole('button', { name: /generate random records/i })
+        )
+      })
+
+      await screen.findByRole('progressbar')
+
+      expect(mutations[0].type).toBe('createMultipleRecords')
+      expect(mutations[0].records[0].cellValuesByFieldId).toHaveProperty(
+        'fldDecimalNumber'
+      )
+    })
+
+    it('Generates a record with a currency field', async () => {
+      userEvent.selectOptions(
+        screen.getByRole('combobox', { name: /dollars/i }),
+        getSelectValue('currency')
+      )
+
+      await screen.findByRole('aside', { name: /preview for dollars/i })
+      expect(
+        screen.getByRole('aside', { name: /preview for dollars/i })
+      ).toBeInTheDocument()
+      await act(async () => {
+        userEvent.click(
+          screen.getByRole('button', { name: /generate random records/i })
+        )
+      })
+
+      await screen.findByRole('progressbar')
+
+      expect(mutations[0].type).toBe('createMultipleRecords')
+      expect(mutations[0].records[0].cellValuesByFieldId).toHaveProperty(
+        'fldDollars'
+      )
+    })
+  })
+
+  describe('Percent generators', () => {
+    it('Generates a record with a percentage', async () => {
+      userEvent.selectOptions(
+        screen.getByRole('combobox', { name: /percent/i }),
+        getSelectValue('percent')
+      )
+
+      await screen.findByRole('aside', { name: /preview for percent/i })
+      expect(
+        screen.getByRole('aside', { name: /preview for percent/i })
+      ).toBeInTheDocument()
+      expect(
+        screen.getByRole('aside', { name: /preview for percent/i })
+      ).toHaveTextContent(/\%/i)
+      await act(async () => {
+        userEvent.click(
+          screen.getByRole('button', { name: /generate random records/i })
+        )
+      })
+
+      await screen.findByRole('progressbar')
+
+      expect(mutations[0].type).toBe('createMultipleRecords')
+      expect(mutations[0].records[0].cellValuesByFieldId).toHaveProperty(
+        'fldPercentage'
+      )
+    })
+  })
+
+  describe('Phone generators', () => {
+    it('Generates a record with a US phone number', async () => {
+      userEvent.selectOptions(
+        screen.getByRole('combobox', { name: /phone/i }),
+        getSelectValue('phone')
+      )
+
+      await screen.findByRole('aside', { name: /preview for phone/i })
+      expect(
+        screen.getByRole('aside', { name: /preview for phone/i })
+      ).toBeInTheDocument()
+      await act(async () => {
+        userEvent.click(
+          screen.getByRole('button', { name: /generate random records/i })
+        )
+      })
+
+      await screen.findByRole('progressbar')
+
+      expect(mutations[0].type).toBe('createMultipleRecords')
+      expect(mutations[0].records[0].cellValuesByFieldId).toHaveProperty(
+        'fldPhone'
+      )
+    })
+
+    it('Generates a record with an IMEI phone number', async () => {
+      userEvent.selectOptions(
+        screen.getByRole('combobox', { name: /phone/i }),
+        getSelectValue('phoneImei')
+      )
+
+      await screen.findByRole('aside', { name: /preview for phone/i })
+      expect(
+        screen.getByRole('aside', { name: /preview for phone/i })
+      ).toBeInTheDocument()
+
+      await act(async () => {
+        userEvent.click(
+          screen.getByRole('button', { name: /generate random records/i })
+        )
+      })
+
+      await screen.findByRole('progressbar')
+
+      expect(mutations[0].type).toBe('createMultipleRecords')
+      expect(mutations[0].records[0].cellValuesByFieldId).toHaveProperty(
+        'fldPhone'
+      )
+    })
+  })
+
   describe('Person generators', () => {
     it('Generates a record with first name value', async () => {
       userEvent.selectOptions(
@@ -435,6 +682,91 @@ describe('Generates records with every generator type', () => {
       expect(mutations[0].type).toBe('createMultipleRecords')
       expect(mutations[0].records[0].cellValuesByFieldId).toHaveProperty(
         'fldName'
+      )
+    })
+  })
+
+  describe('Rating generators', () => {
+    it('Generates a record with a rating field', async () => {
+      userEvent.selectOptions(
+        screen.getByRole('combobox', { name: /rating/i }),
+        getSelectValue('rating')
+      )
+
+      await screen.findByRole('aside', { name: /preview for rating/i })
+      expect(
+        screen.getByRole('aside', { name: /preview for rating/i })
+      ).toBeInTheDocument()
+      expect(
+        screen
+          .getByRole('aside', { name: /preview for rating/i })
+          .querySelector('svg')
+      ).toBeInTheDocument()
+      await act(async () => {
+        userEvent.click(
+          screen.getByRole('button', { name: /generate random records/i })
+        )
+      })
+
+      await screen.findByRole('progressbar')
+
+      expect(mutations[0].type).toBe('createMultipleRecords')
+      expect(mutations[0].records[0].cellValuesByFieldId).toHaveProperty(
+        'fldRating'
+      )
+    })
+  })
+
+  describe('Select generators', () => {
+    it('Generates a record with a single-select field', async () => {
+      userEvent.selectOptions(
+        screen.getByRole('combobox', { name: /status/i }),
+        getSelectValue('multipleSelect')
+      )
+
+      await screen.findByRole('aside', {
+        name: /preview for status/i,
+      })
+      expect(
+        screen.getByRole('aside', { name: /preview for status/i })
+      ).toBeInTheDocument()
+      await act(async () => {
+        userEvent.click(
+          screen.getByRole('button', { name: /generate random records/i })
+        )
+      })
+
+      await screen.findByRole('progressbar')
+
+      expect(mutations[0].type).toBe('createMultipleRecords')
+      expect(mutations[0].records[0].cellValuesByFieldId).toHaveProperty(
+        'fldStatus'
+      )
+    })
+
+    it('Generates a record with a multi-select field', async () => {
+      userEvent.selectOptions(
+        screen.getByRole('combobox', { name: /multiple options/i }),
+        getSelectValue('multipleSelect')
+      )
+
+      await screen.findByRole('aside', {
+        name: /preview for multiple options/i,
+      })
+      expect(
+        screen.getByRole('aside', { name: /preview for multiple options/i })
+      ).toBeInTheDocument()
+      await act(async () => {
+        userEvent.click(
+          screen.getByRole('button', { name: /generate random records/i })
+        )
+      })
+
+      await screen.findByRole('progressbar')
+
+      expect(mutations[0].type).toBe('createMultipleRecords')
+      expect(mutations[0].records[0].cellValuesByFieldId).toHaveProperty(
+        'fldMultipleOption'
       )
     })
   })

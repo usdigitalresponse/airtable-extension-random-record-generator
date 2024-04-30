@@ -5,7 +5,7 @@ import { FieldType } from '@airtable/blocks/models'
 import fieldTypeGroups from '../field-type-groups'
 
 const zipCode: RandomGenerator = {
-  id: 'pzipCodehone',
+  id: 'zipCode',
   name: 'Zip code',
   types: [...fieldTypeGroups.text, FieldType.NUMBER],
   generate: ({ field }) =>

@@ -14,7 +14,7 @@ const slug: RandomGenerator = {
       <FormField label="Length" marginBottom={0}>
         <Input
           type="number"
-          value={options.length}
+          value={options.length.toString()}
           onChange={(event) =>
             setOptions({ length: parseInt(event.target.value, 10) })
           }
@@ -40,7 +40,7 @@ const sentence: RandomGenerator = {
       <FormField label="Number of words" marginBottom={0}>
         <Input
           type="number"
-          value={options.wordCount}
+          value={options.wordCount.toString()}
           onChange={(event) =>
             setOptions({ wordCount: parseInt(event.target.value, 10) })
           }
@@ -70,7 +70,7 @@ const paragraph: RandomGenerator = {
       <FormField label="Number of sentences" marginBottom={0}>
         <Input
           type="number"
-          value={options.sentences}
+          value={options.sentences.toString()}
           onChange={(event) =>
             setOptions({ sentences: parseInt(event.target.value, 10) })
           }
@@ -96,7 +96,7 @@ const paragraphs: RandomGenerator = {
       <FormField label="Number of paragraphs" marginBottom={0}>
         <Input
           type="number"
-          value={options.length}
+          value={options.length.toString()}
           onChange={(event) =>
             setOptions({ length: parseInt(event.target.value, 10) })
           }
