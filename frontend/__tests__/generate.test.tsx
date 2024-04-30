@@ -459,7 +459,7 @@ describe('Generates records with every generator type', () => {
       ).toBeInTheDocument()
       expect(
         screen.getByRole('aside', { name: /preview for percent/i })
-      ).toHaveTextContent(/\%/i)
+      ).toHaveTextContent(/%/i)
       await act(async () => {
         userEvent.click(
           screen.getByRole('button', { name: /generate random records/i })
