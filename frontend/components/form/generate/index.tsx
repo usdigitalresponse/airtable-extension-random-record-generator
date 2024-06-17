@@ -9,6 +9,7 @@ import {
   useBase,
 } from '@airtable/blocks/ui'
 import useRandomGenerator from '../../hook/random-generator'
+import firstLetterContext from '../../hook/random-generator/first-letter-context'
 
 interface Props {
   table: Table
@@ -32,6 +33,7 @@ const GenerateRecords: React.FC<Props> = ({
    */
   const generateRecords = async () => {
     for (let i = 0; i < numberOfRecords; i++) {
+      firstLetterContext.set()
       const recordData = {}
       for (const fieldConfiguration of fieldConfigurations.filter(
         (fieldConfiguration) => fieldConfiguration.generator

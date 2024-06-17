@@ -11,6 +11,7 @@ import TableSelect from './table-select'
 import ConfigureFields from './configure-fields'
 import NumberOfRecords from './number-of-records'
 import GenerateRecords from './generate'
+import firstLetterContext from '../hook/random-generator/first-letter-context'
 
 /**
  * The main form for generating records. This form holds state for child
@@ -28,6 +29,8 @@ const RandomRecordForm: React.FC = () => {
   >([])
   const globalConfig = useGlobalConfig()
   const savedSettings: any = globalConfig.get('savedSettings') || []
+
+  firstLetterContext.set()
 
   /**
    * Save the current form state to the global config. This will allow the user
